@@ -143,19 +143,20 @@ namespace Major_Assignment
             private Boolean cardsAreAllSameSuit()
             {
                 return playingCards[0].suitCode == playingCards[1].suitCode &&
-                    playingCards[0].suitCode == playingCards[2].suitCode &&
-                    playingCards[0].suitCode == playingCards[3].suitCode &&
-                    playingCards[0].suitCode == playingCards[4].suitCode;
+                       playingCards[0].suitCode == playingCards[2].suitCode &&
+                       playingCards[0].suitCode == playingCards[3].suitCode &&
+                       playingCards[0].suitCode == playingCards[4].suitCode;
             }
 
             private Boolean cardValuesAreConsecutive()
             {
                 int[] cardValues = sortedCardValues();
                 int[] straightFlushValues = { cardValues[0], 
-                                                    cardValues[0] + 1, 
-                                                    cardValues[0] + 2, 
-                                                    cardValues[0] + 3, 
-                                                    cardValues[0] + 4 };
+                                              cardValues[0] + 1, 
+                                              cardValues[0] + 2, 
+                                              cardValues[0] + 3, 
+                                              cardValues[0] + 4 
+                                            };
                 if (Enumerable.SequenceEqual(cardValues, straightFlushValues))
                 {
                     return true;
