@@ -98,6 +98,10 @@ namespace Major_Assignment
                 {
                     rank = "Flush";
                 }
+                else if (containsStraight())
+                {
+                    rank = "Straight";
+                }
                 return rank;
             }
 
@@ -149,6 +153,22 @@ namespace Major_Assignment
             private Boolean containsFlush()
             {
                 return cardsAreAllSameSuit();
+            }
+
+            private Boolean containsStraight()
+            {
+                // card values must be consecutive
+                int[] cardValues = sortedCardValues();
+                int[] straightFlushValues = { cardValues[0], 
+                                                    cardValues[0] + 1, 
+                                                    cardValues[0] + 2, 
+                                                    cardValues[0] + 3, 
+                                                    cardValues[0] + 4 };
+                if (Enumerable.SequenceEqual(cardValues, straightFlushValues))
+                {
+                    return true;
+                }
+                return false;
             }
 
             private int[] sortedCardValues()
