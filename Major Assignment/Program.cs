@@ -67,6 +67,17 @@ namespace Major_Assignment
             Console.WriteLine("Hand: " + hand);
             Console.WriteLine("Rank: " + rank);
 
+            // TDD!
+            String expectedHand = "queen of clubs, queen of diamonds, three of hearts, five of diamonds, six of spades";
+            if(hand == expectedHand)
+            {
+                Console.WriteLine("Yay!");
+            }
+            else
+            {
+                Console.WriteLine("Boo :(");
+            }
+
             // wait before exit
             Console.ReadKey();
         }
