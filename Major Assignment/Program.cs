@@ -56,9 +56,13 @@ namespace Major_Assignment
             String suit5 = card5.translateSuitCode();
             String number5 = card5.translateCardNumber();
 
-            String hand = number1 + " of " + suit1 + ", " + number2 +
-                " of " + suit2 + ", " + number3 + " of " + suit3 + ", " +
-                number4 + " of " + suit4 + ", " + number5 + " of " + suit5;
+            String card1ValueString = number1 + " of " + suit1;
+            String card2ValueString = number2 + " of " + suit2;
+            String card3ValueString = number3 + " of " + suit3;
+            String card4ValueString = number4 + " of " + suit4;
+            String card5ValueString = number5 + " of " + suit5;
+            String hand = card1ValueString + ", " + card2ValueString + ", " + card3ValueString + ", " +
+                card4ValueString + ", " + card5ValueString;
 
             // generate rank
             String rank = "pair";
