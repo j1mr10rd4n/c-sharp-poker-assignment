@@ -178,15 +178,11 @@ namespace Major_Assignment
             private Boolean containsFourKind()
             {
                 int[] cardValues = sortedCardValues();
-                var groups = cardValues.GroupBy(item => item);
-                foreach (var group in groups)
-                {
-                    if (group.Count() == 4)
-                    {
-                        return true;
-                    }
-                }
-                return false;
+                int[] distinctValueCount = cardValues.GroupBy(item => item).Select(item => item.Count()).ToArray();
+                Array.Sort(distinctValueCount);
+                // should be 1,1,3
+                int[] fourKind = { 1, 4 };
+                return Enumerable.SequenceEqual(distinctValueCount, fourKind);
             }
 
             private Boolean containsThreeKind()
