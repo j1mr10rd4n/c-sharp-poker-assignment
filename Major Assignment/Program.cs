@@ -39,13 +39,7 @@ namespace Major_Assignment
                 String handString = hand.handString();
 
                 // generate rank
-                String rank = "";
-
-                // test for royal flush
-                if (hand.containsRoyalFlush())
-                {
-                    rank = "RoyalFlush";
-                }
+                String rank = hand.rankString();
 
                 // output result
 //                Console.WriteLine("Hand: " + hand);
@@ -86,6 +80,18 @@ namespace Major_Assignment
             {
                 return playingCards[0].valueString() + ", " + playingCards[1].valueString() + ", " + playingCards[2].valueString() + ", " +
                     playingCards[3].valueString() + ", " + playingCards[4].valueString();
+            }
+
+            public String rankString()
+            {
+                String rank = "";
+
+                // test for royal flush
+                if (containsRoyalFlush())
+                {
+                    rank = "RoyalFlush";
+                }
+                return rank;
             }
 
             public Boolean containsRoyalFlush()
