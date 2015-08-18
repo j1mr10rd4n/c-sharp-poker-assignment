@@ -36,8 +36,7 @@ namespace Major_Assignment
                 // generate hand
                 Hand hand = new Hand(fileContents);
 
-                String handString = hand.playingCards[0].valueString() + ", " + hand.playingCards[1].valueString() + ", " + hand.playingCards[2].valueString() + ", " +
-                    hand.playingCards[3].valueString() + ", " + hand.playingCards[4].valueString();
+                String handString = hand.handString();
 
                 // generate rank
                 String rank = "";
@@ -106,6 +105,12 @@ namespace Major_Assignment
                                        new PlayingCard(fileContents.Split()[6], fileContents.Split()[7]),
                                        new PlayingCard(fileContents.Split()[8], fileContents.Split()[9]) };
                 this.playingCards = hand;
+            }
+
+            public String handString()
+            {
+                return playingCards[0].valueString() + ", " + playingCards[1].valueString() + ", " + playingCards[2].valueString() + ", " +
+                    playingCards[3].valueString() + ", " + playingCards[4].valueString();
             }
         }
 
