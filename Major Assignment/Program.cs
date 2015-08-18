@@ -121,23 +121,15 @@ namespace Major_Assignment
                     int[] cardValues = sortedCardValues();
                     int[] royalFlushValuesLowAce = { 1, 10, 11, 12, 13 };
                     int[] royalFlushValuesHighAce = { 10, 11, 12, 13, 14 };
-                    if (Enumerable.SequenceEqual(cardValues, royalFlushValuesLowAce) || Enumerable.SequenceEqual(cardValues, royalFlushValuesHighAce))
-                    {
-                        return true;
-                    }
+                    return Enumerable.SequenceEqual(cardValues, royalFlushValuesLowAce) || Enumerable.SequenceEqual(cardValues, royalFlushValuesHighAce);
                 }
                 return false;
             }
 
             private Boolean containsStraightFlush()
             {
-                // - are cards all same suit?
-                if (cardsAreAllSameSuit())
-                {
-                    // card values must be consecutive
-                    return cardValuesAreConsecutive();
-                }
-                return false;
+                // - are cards all same suit and consecutive?
+                return cardsAreAllSameSuit() && cardValuesAreConsecutive();
             }
 
             private Boolean cardsAreAllSameSuit()
@@ -157,11 +149,7 @@ namespace Major_Assignment
                                               cardValues[0] + 3, 
                                               cardValues[0] + 4 
                                             };
-                if (Enumerable.SequenceEqual(cardValues, straightFlushValues))
-                {
-                    return true;
-                }
-                return false;
+                return Enumerable.SequenceEqual(cardValues, straightFlushValues);
             }
 
             private Boolean containsFlush()
