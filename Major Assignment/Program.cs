@@ -34,20 +34,20 @@ namespace Major_Assignment
                 Console.WriteLine("Testing: " + expectedRank + " " + fileContents);
 
                 // generate hand
-                PlayingCard card1 = new PlayingCard(fileContents.Split()[0], fileContents.Split()[1]);
-                PlayingCard card2 = new PlayingCard(fileContents.Split()[2], fileContents.Split()[3]);
-                PlayingCard card3 = new PlayingCard(fileContents.Split()[4], fileContents.Split()[5]);
-                PlayingCard card4 = new PlayingCard(fileContents.Split()[6], fileContents.Split()[7]);
-                PlayingCard card5 = new PlayingCard(fileContents.Split()[8], fileContents.Split()[9]);
+                PlayingCard[] hand = { new PlayingCard(fileContents.Split()[0], fileContents.Split()[1]),
+                                       new PlayingCard(fileContents.Split()[2], fileContents.Split()[3]),
+                                       new PlayingCard(fileContents.Split()[4], fileContents.Split()[5]),
+                                       new PlayingCard(fileContents.Split()[6], fileContents.Split()[7]),
+                                       new PlayingCard(fileContents.Split()[8], fileContents.Split()[9]) };
 
-                String hand = card1.valueString() + ", " + card2.valueString() + ", " + card3.valueString() + ", " +
-                    card4.valueString() + ", " + card5.valueString();
+                String handString = hand[0].valueString() + ", " + hand[1].valueString() + ", " + hand[2].valueString() + ", " +
+                    hand[3].valueString() + ", " + hand[4].valueString();
 
                 // generate rank
                 String rank = "";
 
                 // test for royal flush
-                if (handContainsRoyalFlush(card1, card2, card3, card4, card5))
+                if (handContainsRoyalFlush(hand[0], hand[1], hand[2], hand[3], hand[4]))
                 {
                     rank = "RoyalFlush";
                 }
