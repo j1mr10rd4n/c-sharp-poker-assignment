@@ -29,30 +29,25 @@ namespace Major_Assignment
             PlayingCard card1;
             card1.suitCode = fileContents.Split()[0];
             card1.cardNumber = fileContents.Split()[1];
-            String card1ValueString = card1.valueString();
 
             PlayingCard card2;
             card2.suitCode = fileContents.Split()[2];
             card2.cardNumber = fileContents.Split()[3];
-            String card2ValueString = card2.valueString();
 
             PlayingCard card3;
             card3.suitCode = fileContents.Split()[4];
             card3.cardNumber = fileContents.Split()[5];
-            String card3ValueString = card3.valueString();
 
             PlayingCard card4;
             card4.suitCode = fileContents.Split()[6];
             card4.cardNumber = fileContents.Split()[7];
-            String card4ValueString = card4.valueString();
 
             PlayingCard card5;
             card5.suitCode = fileContents.Split()[8];
             card5.cardNumber = fileContents.Split()[9];
-            String card5ValueString = card5.valueString();
 
-            String hand = card1ValueString + ", " + card2ValueString + ", " + card3ValueString + ", " +
-                card4ValueString + ", " + card5ValueString;
+            String hand = card1.valueString() + ", " + card2.valueString() + ", " + card3.valueString() + ", " +
+                card4.valueString() + ", " + card5.valueString();
 
             // generate rank
             String rank = "pair";
