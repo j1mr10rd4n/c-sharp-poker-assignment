@@ -26,33 +26,38 @@ namespace Major_Assignment
             streamReader.Close();
 
             // generate hand
-            String suitCode1 = fileContents.Split()[0];
-            String cardNumber1 = fileContents.Split()[1];
-            String suit1 = translateSuitCode(suitCode1);
-            String number1 = translateCardNumber(cardNumber1);
+            PlayingCard card1;
+            card1.suitCode = fileContents.Split()[0];
+            card1.cardNumber = fileContents.Split()[1];
+            String suit1 = card1.translateSuitCode();
+            String number1 = card1.translateCardNumber();
 
-            String suitCode2 = fileContents.Split()[2];
-            String cardNumber2 = fileContents.Split()[3];
-            String suit2 = translateSuitCode(suitCode2);
-            String number2 = translateCardNumber(cardNumber2);
+            PlayingCard card2;
+            card2.suitCode = fileContents.Split()[2];
+            card2.cardNumber = fileContents.Split()[3];
+            String suit2 = card2.translateSuitCode();
+            String number2 = card2.translateCardNumber();
 
-            String suitCode3 = fileContents.Split()[4];
-            String cardNumber3 = fileContents.Split()[5];
-            String suit3 = translateSuitCode(suitCode3);
-            String number3 = translateCardNumber(cardNumber3);
+            PlayingCard card3;
+            card3.suitCode = fileContents.Split()[4];
+            card3.cardNumber = fileContents.Split()[5];
+            String suit3 = card3.translateSuitCode();
+            String number3 = card3.translateCardNumber();
 
-            String suitCode4 = fileContents.Split()[6];
-            String cardNumber4 = fileContents.Split()[7];
-            String suit4 = translateSuitCode(suitCode4);
-            String number4 = translateCardNumber(cardNumber4);
+            PlayingCard card4;
+            card4.suitCode = fileContents.Split()[6];
+            card4.cardNumber = fileContents.Split()[7];
+            String suit4 = card4.translateSuitCode();
+            String number4 = card4.translateCardNumber();
 
-            String suitCode5 = fileContents.Split()[8];
-            String cardNumber5 = fileContents.Split()[9];
-            String suit5 = translateSuitCode(suitCode5);
-            String number5 = translateCardNumber(cardNumber5);
+            PlayingCard card5;
+            card5.suitCode = fileContents.Split()[8];
+            card5.cardNumber = fileContents.Split()[9];
+            String suit5 = card5.translateSuitCode();
+            String number5 = card5.translateCardNumber();
 
-            String hand = number1 + " of " + suit1 + ", " + number2 + 
-                " of " + suit2 + ", " + number3 + " of " + suit3 + ", " + 
+            String hand = number1 + " of " + suit1 + ", " + number2 +
+                " of " + suit2 + ", " + number3 + " of " + suit3 + ", " +
                 number4 + " of " + suit4 + ", " + number5 + " of " + suit5;
 
             // generate rank
@@ -64,7 +69,7 @@ namespace Major_Assignment
 
             // TDD!
             String expectedHand = "queen of clubs, queen of diamonds, three of hearts, five of diamonds, six of spades";
-            if(hand == expectedHand)
+            if (hand == expectedHand)
             {
                 Console.WriteLine("Yay!");
             }
@@ -72,89 +77,97 @@ namespace Major_Assignment
             {
                 Console.WriteLine("Boo :(");
             }
-
+            
             // wait before exit
             Console.ReadKey();
         }
-        static String translateCardNumber(String cardNumber)
-        {
-            String card = "";
-            if (cardNumber == "2")
-            {
-                card = "two";
-            }
-            else if (cardNumber == "3")
-            {
-                card = "three";
-            }
-            else if (cardNumber == "4")
-            {
-                card = "four";
-            }
-            else if (cardNumber == "5")
-            {
-                card = "five";
-            }
-            else if (cardNumber == "6")
-            {
-                card = "six";
-            }
-            else if (cardNumber == "7")
-            {
-                card = "seven";
-            }
-            else if (cardNumber == "8")
-            {
-                card = "eight";
-            }
-            else if (cardNumber == "9")
-            {
-                card = "nine";
-            } 
-            if (cardNumber == "10")
-            {
-                card = "ten";
-            }
-            else if (cardNumber == "11")
-            {
-                card = "jack";
-            }
-            else if (cardNumber == "12")
-            {
-                card = "queen";
-            }
-            else if (cardNumber == "13")
-            {
-                card = "king";
-            }
-            else if (cardNumber == "14")
-            {
-                card = "ace";
-            }
-            return card;
-        }
 
-        static String translateSuitCode(String suitCode)
-        {
-            String suit = "";
-            if (suitCode == "C" || suitCode == "c")
-            {
-                suit = "clubs";
-            }
-            else if (suitCode == "D" || suitCode == "d")
-            {
-                suit = "diamonds";
-            }
-            else if (suitCode == "H" || suitCode == "h")
-            {
-                suit = "hearts";
-            }
-            else if (suitCode == "S" || suitCode == "s")
-            {
-                suit = "spades";
-            }
-            return suit;
 
+
+
+        public struct PlayingCard
+        {
+            public String suitCode, cardNumber;
+
+            public String translateSuitCode()
+            {
+                String suit = "";
+                if (suitCode == "C" || suitCode == "c")
+                {
+                    suit = "clubs";
+                }
+                else if (suitCode == "D" || suitCode == "d")
+                {
+                    suit = "diamonds";
+                }
+                else if (suitCode == "H" || suitCode == "h")
+                {
+                    suit = "hearts";
+                }
+                else if (suitCode == "S" || suitCode == "s")
+                {
+                    suit = "spades";
+                }
+                return suit;
+            }
+
+            public String translateCardNumber()
+            {
+                String card = "";
+                if (cardNumber == "2")
+                {
+                    card = "two";
+                }
+                else if (cardNumber == "3")
+                {
+                    card = "three";
+                }
+                else if (cardNumber == "4")
+                {
+                    card = "four";
+                }
+                else if (cardNumber == "5")
+                {
+                    card = "five";
+                }
+                else if (cardNumber == "6")
+                {
+                    card = "six";
+                }
+                else if (cardNumber == "7")
+                {
+                    card = "seven";
+                }
+                else if (cardNumber == "8")
+                {
+                    card = "eight";
+                }
+                else if (cardNumber == "9")
+                {
+                    card = "nine";
+                }
+                if (cardNumber == "10")
+                {
+                    card = "ten";
+                }
+                else if (cardNumber == "11")
+                {
+                    card = "jack";
+                }
+                else if (cardNumber == "12")
+                {
+                    card = "queen";
+                }
+                else if (cardNumber == "13")
+                {
+                    card = "king";
+                }
+                else if (cardNumber == "14")
+                {
+                    card = "ace";
+                }
+                return card;
+            }
         }
     }
 }
