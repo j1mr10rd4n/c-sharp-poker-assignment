@@ -32,18 +32,12 @@ namespace Major_Assignment
                 streamReader.Close();
 
                 Console.WriteLine("Testing: " + expectedRank + " " + fileContents);
-
-                // generate hand
                 Hand hand = new Hand(fileContents);
 
-                String handString = hand.handString();
-
-                // generate rank
-                String rank = hand.rankString();
-
-                // output result
-                Console.WriteLine("Hand: " + hand);
-                Console.WriteLine("Rank: " + rank);
+                // output hand
+                Console.WriteLine("Hand: " + hand.handString());
+                // output rank
+                Console.WriteLine("Rank: " + hand.rankString());
             }
            
             // wait before exit
