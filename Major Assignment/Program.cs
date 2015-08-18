@@ -78,7 +78,7 @@ namespace Major_Assignment
         {
             public String suitCode, cardNumber;
 
-            public String translateSuitCode()
+            private String translateSuitCode()
             {
                 String suit = "";
                 if (suitCode == "C" || suitCode == "c")
@@ -100,7 +100,7 @@ namespace Major_Assignment
                 return suit;
             }
 
-            public String translateCardNumber()
+            private String translateCardNumber()
             {
                 String card = "";
                 if (cardNumber == "2")
