@@ -19,40 +19,48 @@ namespace Major_Assignment
 
             // read file
             const String DATA_DIRECTORY = "inputHands";
-            String fileName = "Pair.txt";
-            String path = Path.Combine(System.Environment.CurrentDirectory, "..", "..", DATA_DIRECTORY, fileName);
-            StreamReader streamReader = new StreamReader(path);
-            String fileContents = streamReader.ReadToEnd();
-            streamReader.Close();
-
-            // generate hand
-            PlayingCard card1 = new PlayingCard(fileContents.Split()[0], fileContents.Split()[1]);
-            PlayingCard card2 = new PlayingCard(fileContents.Split()[2], fileContents.Split()[3]);
-            PlayingCard card3 = new PlayingCard(fileContents.Split()[4], fileContents.Split()[5]);
-            PlayingCard card4 = new PlayingCard(fileContents.Split()[6], fileContents.Split()[7]);
-            PlayingCard card5 = new PlayingCard(fileContents.Split()[8], fileContents.Split()[9]);
-
-            String hand = card1.valueString() + ", " + card2.valueString() + ", " + card3.valueString() + ", " +
-                card4.valueString() + ", " + card5.valueString();
-
-            // generate rank
-            String rank = "pair";
-
-            // output result
-            Console.WriteLine("Hand: " + hand);
-            Console.WriteLine("Rank: " + rank);
-
-            // TDD!
-            String expectedHand = "queen of clubs, queen of diamonds, three of hearts, five of diamonds, six of spades";
-            if (hand == expectedHand)
+            String directoryPath = Path.Combine(System.Environment.CurrentDirectory, "..", "..", DATA_DIRECTORY);
+            String[] filesInDirectory = Directory.GetFiles(directoryPath);
+            foreach (String path in filesInDirectory)
             {
-                Console.WriteLine("Yay!");
+                FileInfo fileInfo = new FileInfo(path);
+                String fileName = fileInfo.Name;
+                String expectedRank = fileName.Split('.')[0];
+
+                StreamReader streamReader = new StreamReader(path);
+                String fileContents = streamReader.ReadToEnd();
+                streamReader.Close();
+
+                Console.WriteLine("Testing: " + expectedRank);
+
+                // generate hand
+                PlayingCard card1 = new PlayingCard(fileContents.Split()[0], fileContents.Split()[1]);
+                PlayingCard card2 = new PlayingCard(fileContents.Split()[2], fileContents.Split()[3]);
+                PlayingCard card3 = new PlayingCard(fileContents.Split()[4], fileContents.Split()[5]);
+                PlayingCard card4 = new PlayingCard(fileContents.Split()[6], fileContents.Split()[7]);
+                PlayingCard card5 = new PlayingCard(fileContents.Split()[8], fileContents.Split()[9]);
+
+                String hand = card1.valueString() + ", " + card2.valueString() + ", " + card3.valueString() + ", " +
+                    card4.valueString() + ", " + card5.valueString();
+
+                // generate rank
+                String rank = "Pair";
+
+                // output result
+                Console.WriteLine("Hand: " + hand);
+                Console.WriteLine("Rank: " + rank);
+
+                // TDD!
+                if (rank == expectedRank)
+                {
+                    Console.WriteLine("Yay!");
+                }
+                else
+                {
+                    Console.WriteLine("Boo :(");
+                }
             }
-            else
-            {
-                Console.WriteLine("Boo :(");
-            }
-            
+           
             // wait before exit
             Console.ReadKey();
         }
