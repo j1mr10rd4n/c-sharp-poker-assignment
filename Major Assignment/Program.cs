@@ -107,12 +107,7 @@ namespace Major_Assignment
                 if (cardsAreAllSameSuit())
                 {
                     // card values must be 14,13,12,11,10 or 13,12,11,10,1
-                    int[] cardValues = { Convert.ToInt32(playingCards[0].cardNumber),
-                                         Convert.ToInt32(playingCards[1].cardNumber),
-                                         Convert.ToInt32(playingCards[2].cardNumber),
-                                         Convert.ToInt32(playingCards[3].cardNumber),
-                                         Convert.ToInt32(playingCards[4].cardNumber) };
-                    Array.Sort(cardValues);
+                    int[] cardValues = sortedCardValues();
                     int[] royalFlushValuesLowAce = { 1, 10, 11, 12, 13 };
                     int[] royalFlushValuesHighAce = { 10, 11, 12, 13, 14 };
                     if (Enumerable.SequenceEqual(cardValues, royalFlushValuesLowAce) || Enumerable.SequenceEqual(cardValues, royalFlushValuesHighAce))
@@ -129,12 +124,7 @@ namespace Major_Assignment
                 if (cardsAreAllSameSuit())
                 {
                     // card values must be consecutive
-                    int[] cardValues = { Convert.ToInt32(playingCards[0].cardNumber),
-                                         Convert.ToInt32(playingCards[1].cardNumber),
-                                         Convert.ToInt32(playingCards[2].cardNumber),
-                                         Convert.ToInt32(playingCards[3].cardNumber),
-                                         Convert.ToInt32(playingCards[4].cardNumber) };
-                    Array.Sort(cardValues);
+                    int[] cardValues = sortedCardValues();
                     int[] straightFlushValues = { cardValues[0], 
                                                     cardValues[0] + 1, 
                                                     cardValues[0] + 2, 
@@ -159,6 +149,17 @@ namespace Major_Assignment
             private Boolean containsFlush()
             {
                 return cardsAreAllSameSuit();
+            }
+
+            private int[] sortedCardValues()
+            {
+                int[] cardValues = { Convert.ToInt32(playingCards[0].cardNumber),
+                                         Convert.ToInt32(playingCards[1].cardNumber),
+                                         Convert.ToInt32(playingCards[2].cardNumber),
+                                         Convert.ToInt32(playingCards[3].cardNumber),
+                                         Convert.ToInt32(playingCards[4].cardNumber) };
+                Array.Sort(cardValues);
+                return cardValues;
             }
         }
 
