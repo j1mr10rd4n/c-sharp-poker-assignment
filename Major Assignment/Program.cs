@@ -101,7 +101,7 @@ namespace Major_Assignment
                 return rank;
             }
 
-            public Boolean containsRoyalFlush()
+            private Boolean containsRoyalFlush()
             {
                 // - are cards all same suit?
                 if (cardsAreAllSameSuit())
@@ -118,7 +118,7 @@ namespace Major_Assignment
                 return false;
             }
 
-            public Boolean containsStraightFlush()
+            private Boolean containsStraightFlush()
             {
                 // - are cards all same suit?
                 if (cardsAreAllSameSuit())
