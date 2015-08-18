@@ -110,6 +110,10 @@ namespace Major_Assignment
                 {
                     rank = "ThreeKind";
                 }
+                else if (containsFullHouse())
+                {
+                    rank = "FullHouse";
+                }
                 return rank;
             }
 
@@ -177,22 +181,29 @@ namespace Major_Assignment
 
             private Boolean containsFourKind()
             {
-                int[] cardValues = sortedCardValues();
-                int[] distinctValueCount = cardValues.GroupBy(item => item).Select(item => item.Count()).ToArray();
-                Array.Sort(distinctValueCount);
-                // should be 1,1,3
+                // should be 1,4
                 int[] fourKind = { 1, 4 };
-                return Enumerable.SequenceEqual(distinctValueCount, fourKind);
+                return hasValueCount(fourKind);
             }
 
             private Boolean containsThreeKind()
             {
+                int[] threeKind = { 1, 1, 3 };
+                return hasValueCount(threeKind);
+            }
+
+            private Boolean containsFullHouse()
+            {
+                int[] fullHouse = { 2, 3 };
+                return hasValueCount(fullHouse);
+            }
+
+            private Boolean hasValueCount(int[] valueCount)
+            {
                 int[] cardValues = sortedCardValues();
                 int[] distinctValueCount = cardValues.GroupBy(item => item).Select(item => item.Count()).ToArray();
                 Array.Sort(distinctValueCount);
-                // should be 1,1,3
-                int[] threeKind = { 1, 1, 3 };
-                return Enumerable.SequenceEqual(distinctValueCount, threeKind);
+                return Enumerable.SequenceEqual(distinctValueCount, valueCount);
             }
 
             private int[] sortedCardValues()
