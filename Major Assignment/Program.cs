@@ -34,20 +34,16 @@ namespace Major_Assignment
                 Console.WriteLine("Testing: " + expectedRank + " " + fileContents);
 
                 // generate hand
-                PlayingCard[] hand = { new PlayingCard(fileContents.Split()[0], fileContents.Split()[1]),
-                                       new PlayingCard(fileContents.Split()[2], fileContents.Split()[3]),
-                                       new PlayingCard(fileContents.Split()[4], fileContents.Split()[5]),
-                                       new PlayingCard(fileContents.Split()[6], fileContents.Split()[7]),
-                                       new PlayingCard(fileContents.Split()[8], fileContents.Split()[9]) };
+                Hand hand = new Hand(fileContents);
 
-                String handString = hand[0].valueString() + ", " + hand[1].valueString() + ", " + hand[2].valueString() + ", " +
-                    hand[3].valueString() + ", " + hand[4].valueString();
+                String handString = hand.playingCards[0].valueString() + ", " + hand.playingCards[1].valueString() + ", " + hand.playingCards[2].valueString() + ", " +
+                    hand.playingCards[3].valueString() + ", " + hand.playingCards[4].valueString();
 
                 // generate rank
                 String rank = "";
 
                 // test for royal flush
-                if (handContainsRoyalFlush(hand[0], hand[1], hand[2], hand[3], hand[4]))
+                if (handContainsRoyalFlush(hand.playingCards[0], hand.playingCards[1], hand.playingCards[2], hand.playingCards[3], hand.playingCards[4]))
                 {
                     rank = "RoyalFlush";
                 }
@@ -95,6 +91,22 @@ namespace Major_Assignment
                 }
             }
             return false;
+        }
+
+        public struct Hand
+        {
+            public PlayingCard[] playingCards;
+
+            // Constructor
+            public Hand(String fileContents)
+            {
+                PlayingCard[] hand = { new PlayingCard(fileContents.Split()[0], fileContents.Split()[1]),
+                                       new PlayingCard(fileContents.Split()[2], fileContents.Split()[3]),
+                                       new PlayingCard(fileContents.Split()[4], fileContents.Split()[5]),
+                                       new PlayingCard(fileContents.Split()[6], fileContents.Split()[7]),
+                                       new PlayingCard(fileContents.Split()[8], fileContents.Split()[9]) };
+                this.playingCards = hand;
+            }
         }
 
         public struct PlayingCard
