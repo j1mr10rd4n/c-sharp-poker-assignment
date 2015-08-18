@@ -128,16 +128,7 @@ namespace Major_Assignment
                 if (cardsAreAllSameSuit())
                 {
                     // card values must be consecutive
-                    int[] cardValues = sortedCardValues();
-                    int[] straightFlushValues = { cardValues[0], 
-                                                    cardValues[0] + 1, 
-                                                    cardValues[0] + 2, 
-                                                    cardValues[0] + 3, 
-                                                    cardValues[0] + 4 };
-                    if (Enumerable.SequenceEqual(cardValues, straightFlushValues))
-                    {
-                        return true;
-                    }
+                    return cardValuesAreConsecutive();
                 }
                 return false;
             }
@@ -150,14 +141,8 @@ namespace Major_Assignment
                     playingCards[0].suitCode == playingCards[4].suitCode;
             }
 
-            private Boolean containsFlush()
+            private Boolean cardValuesAreConsecutive()
             {
-                return cardsAreAllSameSuit();
-            }
-
-            private Boolean containsStraight()
-            {
-                // card values must be consecutive
                 int[] cardValues = sortedCardValues();
                 int[] straightFlushValues = { cardValues[0], 
                                                     cardValues[0] + 1, 
@@ -169,6 +154,17 @@ namespace Major_Assignment
                     return true;
                 }
                 return false;
+            }
+
+            private Boolean containsFlush()
+            {
+                return cardsAreAllSameSuit();
+            }
+
+            private Boolean containsStraight()
+            {
+                // card values must be consecutive
+                return cardValuesAreConsecutive();
             }
 
             private int[] sortedCardValues()
