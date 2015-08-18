@@ -31,7 +31,7 @@ namespace Major_Assignment
                 String fileContents = streamReader.ReadToEnd();
                 streamReader.Close();
 
-                Console.WriteLine("Testing: " + expectedRank);
+                Console.WriteLine("Testing: " + expectedRank + " " + fileContents);
 
                 // generate hand
                 PlayingCard card1 = new PlayingCard(fileContents.Split()[0], fileContents.Split()[1]);
@@ -46,8 +46,30 @@ namespace Major_Assignment
                 // generate rank
                 String rank = "Pair";
 
+                // test for royal flush
+                // - are cards all same suit?
+                if (card1.suitCode == card2.suitCode && 
+                    card1.suitCode == card3.suitCode && 
+                    card1.suitCode == card4.suitCode && 
+                    card1.suitCode == card5.suitCode)
+                {
+                    // card values must be 14,13,12,11,10 or 13,12,11,10,1
+                    int[] cardValues = { Convert.ToInt32(card1.cardNumber),
+                                         Convert.ToInt32(card2.cardNumber),
+                                         Convert.ToInt32(card3.cardNumber),
+                                         Convert.ToInt32(card4.cardNumber),
+                                         Convert.ToInt32(card5.cardNumber) };
+                    Array.Sort(cardValues);
+                    int[] royalFlushValuesLowAce = { 1, 10, 11, 12, 13 };
+                    int[] royalFlushValuesHighAce = { 10, 11, 12, 13, 14 };
+                    if (Enumerable.SequenceEqual(cardValues, royalFlushValuesLowAce) || Enumerable.SequenceEqual(cardValues, royalFlushValuesHighAce) )
+                    {
+                        rank = "RoyalFlush";
+                    }
+                }
+
                 // output result
-                Console.WriteLine("Hand: " + hand);
+//                Console.WriteLine("Hand: " + hand);
                 Console.WriteLine("Rank: " + rank);
 
                 // TDD!
@@ -70,7 +92,7 @@ namespace Major_Assignment
 
         public struct PlayingCard
         {
-            private String suitCode, cardNumber;
+            public String suitCode, cardNumber;
 
             // Constructor
             public PlayingCard(String suitCode, String cardNumber)
