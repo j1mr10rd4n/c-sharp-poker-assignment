@@ -106,6 +106,10 @@ namespace Major_Assignment
                 {
                     rank = "FourKind";
                 }
+                else if (containsThreeKind())
+                {
+                    rank = "ThreeKind";
+                }
                 return rank;
             }
 
@@ -183,6 +187,16 @@ namespace Major_Assignment
                     }
                 }
                 return false;
+            }
+
+            private Boolean containsThreeKind()
+            {
+                int[] cardValues = sortedCardValues();
+                int[] distinctValueCount = cardValues.GroupBy(item => item).Select(item => item.Count()).ToArray();
+                Array.Sort(distinctValueCount);
+                // should be 1,1,3
+                int[] threeKind = { 1, 1, 3 };
+                return Enumerable.SequenceEqual(distinctValueCount, threeKind);
             }
 
             private int[] sortedCardValues()
