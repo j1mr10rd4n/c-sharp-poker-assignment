@@ -94,6 +94,10 @@ namespace Major_Assignment
                 {
                     rank = "StraightFlush";
                 }
+                else if (containsFlush())
+                {
+                    rank = "Flush";
+                }
                 return rank;
             }
 
@@ -150,6 +154,11 @@ namespace Major_Assignment
                     playingCards[0].suitCode == playingCards[2].suitCode &&
                     playingCards[0].suitCode == playingCards[3].suitCode &&
                     playingCards[0].suitCode == playingCards[4].suitCode;
+            }
+
+            private Boolean containsFlush()
+            {
+                return cardsAreAllSameSuit();
             }
         }
 
