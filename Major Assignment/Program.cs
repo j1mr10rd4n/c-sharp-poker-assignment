@@ -102,6 +102,10 @@ namespace Major_Assignment
                 {
                     rank = "Straight";
                 }
+                else if (containsFourKind())
+                {
+                    rank = "FourKind";
+                }
                 return rank;
             }
 
@@ -166,6 +170,18 @@ namespace Major_Assignment
                 // card values must be consecutive
                 return cardValuesAreConsecutive();
             }
+
+            private Boolean containsFourKind()
+            {
+                int[] cardValues = sortedCardValues();
+                return cardValues[0] == cardValues[1] &&
+                    cardValues[0] == cardValues[2] &&
+                    cardValues[0] == cardValues[3]
+                    ||
+                    cardValues[1] == cardValues[2] &&
+                    cardValues[1] == cardValues[3] &&
+                    cardValues[1] == cardValues[4];
+             }
 
             private int[] sortedCardValues()
             {
