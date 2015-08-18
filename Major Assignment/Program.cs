@@ -114,6 +114,14 @@ namespace Major_Assignment
                 {
                     rank = "FullHouse";
                 }
+                else if (containsTwoPair())
+                {
+                    rank = "TwoPair";
+                }
+                else if (containsPair())
+                {
+                    rank = "Pair";
+                }
                 return rank;
             }
 
@@ -196,6 +204,18 @@ namespace Major_Assignment
             {
                 int[] fullHouse = { 2, 3 };
                 return hasValueCount(fullHouse);
+            }
+
+            private Boolean containsTwoPair()
+            {
+                int[] twoPair = { 1, 2, 2 };
+                return hasValueCount(twoPair);
+            }
+
+            private Boolean containsPair()
+            {
+                int[] pair = { 1, 1, 1, 2 };
+                return hasValueCount(pair);
             }
 
             private Boolean hasValueCount(int[] valueCount)
