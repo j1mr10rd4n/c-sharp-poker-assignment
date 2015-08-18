@@ -44,28 +44,12 @@ namespace Major_Assignment
                     card4.valueString() + ", " + card5.valueString();
 
                 // generate rank
-                String rank = "Pair";
+                String rank = "";
 
                 // test for royal flush
-                // - are cards all same suit?
-                if (card1.suitCode == card2.suitCode && 
-                    card1.suitCode == card3.suitCode && 
-                    card1.suitCode == card4.suitCode && 
-                    card1.suitCode == card5.suitCode)
+                if (handContainsRoyalFlush(card1, card2, card3, card4, card5))
                 {
-                    // card values must be 14,13,12,11,10 or 13,12,11,10,1
-                    int[] cardValues = { Convert.ToInt32(card1.cardNumber),
-                                         Convert.ToInt32(card2.cardNumber),
-                                         Convert.ToInt32(card3.cardNumber),
-                                         Convert.ToInt32(card4.cardNumber),
-                                         Convert.ToInt32(card5.cardNumber) };
-                    Array.Sort(cardValues);
-                    int[] royalFlushValuesLowAce = { 1, 10, 11, 12, 13 };
-                    int[] royalFlushValuesHighAce = { 10, 11, 12, 13, 14 };
-                    if (Enumerable.SequenceEqual(cardValues, royalFlushValuesLowAce) || Enumerable.SequenceEqual(cardValues, royalFlushValuesHighAce) )
-                    {
-                        rank = "RoyalFlush";
-                    }
+                    rank = "RoyalFlush";
                 }
 
                 // output result
@@ -88,7 +72,30 @@ namespace Major_Assignment
         }
 
 
-
+        static Boolean handContainsRoyalFlush(PlayingCard card1, PlayingCard card2, PlayingCard card3, PlayingCard card4, PlayingCard card5)
+        {
+            // - are cards all same suit?
+            if (card1.suitCode == card2.suitCode &&
+                card1.suitCode == card3.suitCode &&
+                card1.suitCode == card4.suitCode &&
+                card1.suitCode == card5.suitCode)
+            {
+                // card values must be 14,13,12,11,10 or 13,12,11,10,1
+                int[] cardValues = { Convert.ToInt32(card1.cardNumber),
+                                         Convert.ToInt32(card2.cardNumber),
+                                         Convert.ToInt32(card3.cardNumber),
+                                         Convert.ToInt32(card4.cardNumber),
+                                         Convert.ToInt32(card5.cardNumber) };
+                Array.Sort(cardValues);
+                int[] royalFlushValuesLowAce = { 1, 10, 11, 12, 13 };
+                int[] royalFlushValuesHighAce = { 10, 11, 12, 13, 14 };
+                if (Enumerable.SequenceEqual(cardValues, royalFlushValuesLowAce) || Enumerable.SequenceEqual(cardValues, royalFlushValuesHighAce))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
 
         public struct PlayingCard
         {
