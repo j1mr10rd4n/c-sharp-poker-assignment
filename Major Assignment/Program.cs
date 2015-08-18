@@ -149,10 +149,6 @@ namespace Major_Assignment
             }
             return suit;
 
-            {
-          
-            }
-          
         }
     }
 }
