@@ -31,36 +31,36 @@ namespace Major_Assignment
             card1.cardNumber = fileContents.Split()[1];
             String suit1 = card1.translateSuitCode();
             String number1 = card1.translateCardNumber();
+            String card1ValueString = number1 + " of " + suit1;
 
             PlayingCard card2;
             card2.suitCode = fileContents.Split()[2];
             card2.cardNumber = fileContents.Split()[3];
             String suit2 = card2.translateSuitCode();
             String number2 = card2.translateCardNumber();
+            String card2ValueString = number2 + " of " + suit2;
 
             PlayingCard card3;
             card3.suitCode = fileContents.Split()[4];
             card3.cardNumber = fileContents.Split()[5];
             String suit3 = card3.translateSuitCode();
             String number3 = card3.translateCardNumber();
+            String card3ValueString = number3 + " of " + suit3;
 
             PlayingCard card4;
             card4.suitCode = fileContents.Split()[6];
             card4.cardNumber = fileContents.Split()[7];
             String suit4 = card4.translateSuitCode();
             String number4 = card4.translateCardNumber();
+            String card4ValueString = number4 + " of " + suit4;
 
             PlayingCard card5;
             card5.suitCode = fileContents.Split()[8];
             card5.cardNumber = fileContents.Split()[9];
             String suit5 = card5.translateSuitCode();
             String number5 = card5.translateCardNumber();
-
-            String card1ValueString = number1 + " of " + suit1;
-            String card2ValueString = number2 + " of " + suit2;
-            String card3ValueString = number3 + " of " + suit3;
-            String card4ValueString = number4 + " of " + suit4;
             String card5ValueString = number5 + " of " + suit5;
+
             String hand = card1ValueString + ", " + card2ValueString + ", " + card3ValueString + ", " +
                 card4ValueString + ", " + card5ValueString;
 
