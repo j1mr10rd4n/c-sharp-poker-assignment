@@ -90,6 +90,9 @@ namespace Major_Assignment
                 if (containsRoyalFlush())
                 {
                     rank = "RoyalFlush";
+                } else if (containsStraightFlush())
+                {
+                    rank = "StraightFlush";
                 }
                 return rank;
             }
@@ -119,6 +122,33 @@ namespace Major_Assignment
                 return false;
             }
 
+            public Boolean containsStraightFlush()
+            {
+                // - are cards all same suit?
+                if (playingCards[0].suitCode == playingCards[1].suitCode &&
+                    playingCards[0].suitCode == playingCards[2].suitCode &&
+                    playingCards[0].suitCode == playingCards[3].suitCode &&
+                    playingCards[0].suitCode == playingCards[4].suitCode)
+                {
+                    // card values must be consecutive
+                    int[] cardValues = { Convert.ToInt32(playingCards[0].cardNumber),
+                                         Convert.ToInt32(playingCards[1].cardNumber),
+                                         Convert.ToInt32(playingCards[2].cardNumber),
+                                         Convert.ToInt32(playingCards[3].cardNumber),
+                                         Convert.ToInt32(playingCards[4].cardNumber) };
+                    Array.Sort(cardValues);
+                    int[] straightFlushValues = { cardValues[0], 
+                                                    cardValues[0] + 1, 
+                                                    cardValues[0] + 2, 
+                                                    cardValues[0] + 3, 
+                                                    cardValues[0] + 4 };
+                    if (Enumerable.SequenceEqual(cardValues, straightFlushValues))
+                    {
+                        return true;
+                    }
+                }
+                return false;
+            }
         }
 
         public struct PlayingCard
