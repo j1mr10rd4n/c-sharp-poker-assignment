@@ -42,18 +42,8 @@ namespace Major_Assignment
                 String rank = hand.rankString();
 
                 // output result
-//                Console.WriteLine("Hand: " + hand);
+                Console.WriteLine("Hand: " + hand);
                 Console.WriteLine("Rank: " + rank);
-
-                // TDD!
-                if (rank == expectedRank)
-                {
-                    Console.WriteLine("Yay!");
-                }
-                else
-                {
-                    Console.WriteLine("Boo :(");
-                }
             }
            
             // wait before exit
