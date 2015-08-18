@@ -11,35 +11,37 @@ namespace Major_Assignment
     {
         static void Main(string[] args)
         {
-            String pokerHand;
-
             // print menu and ask for input file
             Console.WriteLine("Please enter the number of the poker hand you wish to see");
-            pokerHand = Console.ReadLine();
 
-            // read file
+            // read files in directory
             const String DATA_DIRECTORY = "inputHands";
             String directoryPath = Path.Combine(System.Environment.CurrentDirectory, "..", "..", DATA_DIRECTORY);
             String[] filesInDirectory = Directory.GetFiles(directoryPath);
-            foreach (String path in filesInDirectory)
+
+            for (int fileIndex = 0; fileIndex < filesInDirectory.Length; fileIndex++)
             {
-                FileInfo fileInfo = new FileInfo(path);
+                FileInfo fileInfo = new FileInfo(filesInDirectory[fileIndex]);
                 String fileName = fileInfo.Name;
                 String expectedRank = fileName.Split('.')[0];
-
-                StreamReader streamReader = new StreamReader(path);
-                String fileContents = streamReader.ReadToEnd();
-                streamReader.Close();
-
-                Console.WriteLine("Testing: " + expectedRank + " " + fileContents);
-                Hand hand = new Hand(fileContents);
-
-                // output hand
-                Console.WriteLine("Hand: " + hand.handString());
-                // output rank
-                Console.WriteLine("Rank: " + hand.rankString());
+                Console.WriteLine((fileIndex + 1) + ": " + expectedRank);
             }
-           
+
+            String selectedFileNumberString = Console.ReadLine();
+            int selectedFileNumber = Convert.ToInt32(selectedFileNumberString);
+
+            // read file
+            String selectedFilePath = filesInDirectory[selectedFileNumber - 1];
+            StreamReader streamReader = new StreamReader(selectedFilePath);
+            String fileContents = streamReader.ReadToEnd();
+            streamReader.Close();
+
+            Hand hand = new Hand(fileContents);
+            // output hand
+            Console.WriteLine("Hand: " + hand.handString());
+            // output rank
+            Console.WriteLine("Rank: " + hand.rankString());
+
             // wait before exit
             Console.ReadKey();
         }
