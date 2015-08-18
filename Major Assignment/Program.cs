@@ -76,7 +76,8 @@ namespace Major_Assignment
                 if (containsRoyalFlush())
                 {
                     rank = "RoyalFlush";
-                } else if (containsStraightFlush())
+                } 
+                else if (containsStraightFlush())
                 {
                     rank = "StraightFlush";
                 }
