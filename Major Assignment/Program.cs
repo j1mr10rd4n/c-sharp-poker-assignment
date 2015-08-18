@@ -26,25 +26,11 @@ namespace Major_Assignment
             streamReader.Close();
 
             // generate hand
-            PlayingCard card1;
-            card1.suitCode = fileContents.Split()[0];
-            card1.cardNumber = fileContents.Split()[1];
-
-            PlayingCard card2;
-            card2.suitCode = fileContents.Split()[2];
-            card2.cardNumber = fileContents.Split()[3];
-
-            PlayingCard card3;
-            card3.suitCode = fileContents.Split()[4];
-            card3.cardNumber = fileContents.Split()[5];
-
-            PlayingCard card4;
-            card4.suitCode = fileContents.Split()[6];
-            card4.cardNumber = fileContents.Split()[7];
-
-            PlayingCard card5;
-            card5.suitCode = fileContents.Split()[8];
-            card5.cardNumber = fileContents.Split()[9];
+            PlayingCard card1 = new PlayingCard(fileContents.Split()[0], fileContents.Split()[1]);
+            PlayingCard card2 = new PlayingCard(fileContents.Split()[2], fileContents.Split()[3]);
+            PlayingCard card3 = new PlayingCard(fileContents.Split()[4], fileContents.Split()[5]);
+            PlayingCard card4 = new PlayingCard(fileContents.Split()[6], fileContents.Split()[7]);
+            PlayingCard card5 = new PlayingCard(fileContents.Split()[8], fileContents.Split()[9]);
 
             String hand = card1.valueString() + ", " + card2.valueString() + ", " + card3.valueString() + ", " +
                 card4.valueString() + ", " + card5.valueString();
@@ -76,7 +62,14 @@ namespace Major_Assignment
 
         public struct PlayingCard
         {
-            public String suitCode, cardNumber;
+            private String suitCode, cardNumber;
+
+            // Constructor
+            public PlayingCard(String suitCode, String cardNumber)
+            {
+                this.suitCode = suitCode;
+                this.cardNumber = cardNumber;
+            }
 
             private String translateSuitCode()
             {
