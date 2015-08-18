@@ -29,37 +29,27 @@ namespace Major_Assignment
             PlayingCard card1;
             card1.suitCode = fileContents.Split()[0];
             card1.cardNumber = fileContents.Split()[1];
-            String suit1 = card1.translateSuitCode();
-            String number1 = card1.translateCardNumber();
-            String card1ValueString = number1 + " of " + suit1;
+            String card1ValueString = card1.translateSuitCode() + " of " + card1.translateCardNumber();
 
             PlayingCard card2;
             card2.suitCode = fileContents.Split()[2];
             card2.cardNumber = fileContents.Split()[3];
-            String suit2 = card2.translateSuitCode();
-            String number2 = card2.translateCardNumber();
-            String card2ValueString = number2 + " of " + suit2;
+            String card2ValueString = card2.translateSuitCode() + " of " + card2.translateCardNumber();
 
             PlayingCard card3;
             card3.suitCode = fileContents.Split()[4];
             card3.cardNumber = fileContents.Split()[5];
-            String suit3 = card3.translateSuitCode();
-            String number3 = card3.translateCardNumber();
-            String card3ValueString = number3 + " of " + suit3;
+            String card3ValueString = card3.translateSuitCode() + " of " + card3.translateCardNumber();
 
             PlayingCard card4;
             card4.suitCode = fileContents.Split()[6];
             card4.cardNumber = fileContents.Split()[7];
-            String suit4 = card4.translateSuitCode();
-            String number4 = card4.translateCardNumber();
-            String card4ValueString = number4 + " of " + suit4;
+            String card4ValueString = card4.translateSuitCode() + " of " + card4.translateCardNumber();
 
             PlayingCard card5;
             card5.suitCode = fileContents.Split()[8];
             card5.cardNumber = fileContents.Split()[9];
-            String suit5 = card5.translateSuitCode();
-            String number5 = card5.translateCardNumber();
-            String card5ValueString = number5 + " of " + suit5;
+            String card5ValueString = card5.translateSuitCode() + " of " + card5.translateCardNumber();
 
             String hand = card1ValueString + ", " + card2ValueString + ", " + card3ValueString + ", " +
                 card4ValueString + ", " + card5ValueString;
