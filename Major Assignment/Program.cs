@@ -118,10 +118,10 @@ namespace Major_Assignment
                 if (cardsAreAllSameSuit())
                 {
                     // card values must be 14,13,12,11,10 or 13,12,11,10,1
-                    int[] cardValues = sortedCardValues();
+                    
                     int[] royalFlushValuesLowAce = { 1, 10, 11, 12, 13 };
                     int[] royalFlushValuesHighAce = { 10, 11, 12, 13, 14 };
-                    return Enumerable.SequenceEqual(cardValues, royalFlushValuesLowAce) || Enumerable.SequenceEqual(cardValues, royalFlushValuesHighAce);
+                    return containsValueSequence(royalFlushValuesLowAce) || containsValueSequence(royalFlushValuesHighAce);
                 }
                 return false;
             }
@@ -149,7 +149,13 @@ namespace Major_Assignment
                                               cardValues[0] + 3, 
                                               cardValues[0] + 4 
                                             };
-                return Enumerable.SequenceEqual(cardValues, straightFlushValues);
+                return containsValueSequence(straightFlushValues);
+            }
+
+            private Boolean containsValueSequence(int[] valueSequence)
+            {
+                int[] cardValues = sortedCardValues();
+                return Enumerable.SequenceEqual(cardValues, valueSequence);
             }
 
             private Boolean containsFlush()
