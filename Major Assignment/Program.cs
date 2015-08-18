@@ -27,33 +27,28 @@ namespace Major_Assignment
 
             // generate hand
             String suitCode1 = fileContents.Split()[0];
-            String suit1 = translateSuitCode(suitCode1);
-
-            String suitCode2 = fileContents.Split()[2];
-            String suit2 = translateSuitCode(suitCode2);
-
-            String suitCode3 = fileContents.Split()[4];
-            String suit3 = translateSuitCode(suitCode3);
-
-            String suitCode4 = fileContents.Split()[6];
-            String suit4 = translateSuitCode(suitCode4);
-
-            String suitCode5 = fileContents.Split()[8];
-            String suit5 = translateSuitCode(suitCode5);
-
             String cardNumber1 = fileContents.Split()[1];
+            String suit1 = translateSuitCode(suitCode1);
             String number1 = translateCardNumber(cardNumber1);
 
+            String suitCode2 = fileContents.Split()[2];
             String cardNumber2 = fileContents.Split()[3];
+            String suit2 = translateSuitCode(suitCode2);
             String number2 = translateCardNumber(cardNumber2);
 
+            String suitCode3 = fileContents.Split()[4];
             String cardNumber3 = fileContents.Split()[5];
+            String suit3 = translateSuitCode(suitCode3);
             String number3 = translateCardNumber(cardNumber3);
 
+            String suitCode4 = fileContents.Split()[6];
             String cardNumber4 = fileContents.Split()[7];
+            String suit4 = translateSuitCode(suitCode4);
             String number4 = translateCardNumber(cardNumber4);
 
+            String suitCode5 = fileContents.Split()[8];
             String cardNumber5 = fileContents.Split()[9];
+            String suit5 = translateSuitCode(suitCode5);
             String number5 = translateCardNumber(cardNumber5);
 
             String hand = number1 + " of " + suit1 + ", " + number2 + 
