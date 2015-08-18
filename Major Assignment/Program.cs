@@ -42,7 +42,7 @@ namespace Major_Assignment
                 String rank = "";
 
                 // test for royal flush
-                if (handContainsRoyalFlush(hand))
+                if (hand.containsRoyalFlush())
                 {
                     rank = "RoyalFlush";
                 }
@@ -67,31 +67,6 @@ namespace Major_Assignment
         }
 
 
-        static Boolean handContainsRoyalFlush(Hand hand)
-        {
-            // - are cards all same suit?
-            if (hand.playingCards[0].suitCode == hand.playingCards[1].suitCode &&
-                hand.playingCards[0].suitCode == hand.playingCards[2].suitCode &&
-                hand.playingCards[0].suitCode == hand.playingCards[3].suitCode &&
-                hand.playingCards[0].suitCode == hand.playingCards[4].suitCode)
-            {
-                // card values must be 14,13,12,11,10 or 13,12,11,10,1
-                int[] cardValues = { Convert.ToInt32(hand.playingCards[0].cardNumber),
-                                         Convert.ToInt32(hand.playingCards[1].cardNumber),
-                                         Convert.ToInt32(hand.playingCards[2].cardNumber),
-                                         Convert.ToInt32(hand.playingCards[3].cardNumber),
-                                         Convert.ToInt32(hand.playingCards[4].cardNumber) };
-                Array.Sort(cardValues);
-                int[] royalFlushValuesLowAce = { 1, 10, 11, 12, 13 };
-                int[] royalFlushValuesHighAce = { 10, 11, 12, 13, 14 };
-                if (Enumerable.SequenceEqual(cardValues, royalFlushValuesLowAce) || Enumerable.SequenceEqual(cardValues, royalFlushValuesHighAce))
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
         public struct Hand
         {
             public PlayingCard[] playingCards;
@@ -112,6 +87,32 @@ namespace Major_Assignment
                 return playingCards[0].valueString() + ", " + playingCards[1].valueString() + ", " + playingCards[2].valueString() + ", " +
                     playingCards[3].valueString() + ", " + playingCards[4].valueString();
             }
+
+            public Boolean containsRoyalFlush()
+            {
+                // - are cards all same suit?
+                if (playingCards[0].suitCode == playingCards[1].suitCode &&
+                    playingCards[0].suitCode == playingCards[2].suitCode &&
+                    playingCards[0].suitCode == playingCards[3].suitCode &&
+                    playingCards[0].suitCode == playingCards[4].suitCode)
+                {
+                    // card values must be 14,13,12,11,10 or 13,12,11,10,1
+                    int[] cardValues = { Convert.ToInt32(playingCards[0].cardNumber),
+                                         Convert.ToInt32(playingCards[1].cardNumber),
+                                         Convert.ToInt32(playingCards[2].cardNumber),
+                                         Convert.ToInt32(playingCards[3].cardNumber),
+                                         Convert.ToInt32(playingCards[4].cardNumber) };
+                    Array.Sort(cardValues);
+                    int[] royalFlushValuesLowAce = { 1, 10, 11, 12, 13 };
+                    int[] royalFlushValuesHighAce = { 10, 11, 12, 13, 14 };
+                    if (Enumerable.SequenceEqual(cardValues, royalFlushValuesLowAce) || Enumerable.SequenceEqual(cardValues, royalFlushValuesHighAce))
+                    {
+                        return true;
+                    }
+                }
+                return false;
+            }
+
         }
 
         public struct PlayingCard
