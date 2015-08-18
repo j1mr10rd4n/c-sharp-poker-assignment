@@ -174,8 +174,15 @@ namespace Major_Assignment
             private Boolean containsFourKind()
             {
                 int[] cardValues = sortedCardValues();
-                int[] distinctValues = cardValues.Distinct().ToArray();
-                return distinctValues.Length == 2;
+                var groups = cardValues.GroupBy(item => item);
+                foreach (var group in groups)
+                {
+                    if (group.Count() == 4)
+                    {
+                        return true;
+                    }
+                }
+                return false;
             }
 
             private int[] sortedCardValues()
