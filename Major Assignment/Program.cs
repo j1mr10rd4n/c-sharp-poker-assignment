@@ -100,10 +100,7 @@ namespace Major_Assignment
             public Boolean containsRoyalFlush()
             {
                 // - are cards all same suit?
-                if (playingCards[0].suitCode == playingCards[1].suitCode &&
-                    playingCards[0].suitCode == playingCards[2].suitCode &&
-                    playingCards[0].suitCode == playingCards[3].suitCode &&
-                    playingCards[0].suitCode == playingCards[4].suitCode)
+                if (cardsAreAllSameSuit())
                 {
                     // card values must be 14,13,12,11,10 or 13,12,11,10,1
                     int[] cardValues = { Convert.ToInt32(playingCards[0].cardNumber),
@@ -125,10 +122,7 @@ namespace Major_Assignment
             public Boolean containsStraightFlush()
             {
                 // - are cards all same suit?
-                if (playingCards[0].suitCode == playingCards[1].suitCode &&
-                    playingCards[0].suitCode == playingCards[2].suitCode &&
-                    playingCards[0].suitCode == playingCards[3].suitCode &&
-                    playingCards[0].suitCode == playingCards[4].suitCode)
+                if (cardsAreAllSameSuit())
                 {
                     // card values must be consecutive
                     int[] cardValues = { Convert.ToInt32(playingCards[0].cardNumber),
@@ -148,6 +142,14 @@ namespace Major_Assignment
                     }
                 }
                 return false;
+            }
+
+            private Boolean cardsAreAllSameSuit()
+            {
+                return playingCards[0].suitCode == playingCards[1].suitCode &&
+                    playingCards[0].suitCode == playingCards[2].suitCode &&
+                    playingCards[0].suitCode == playingCards[3].suitCode &&
+                    playingCards[0].suitCode == playingCards[4].suitCode;
             }
         }
 
